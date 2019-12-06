@@ -38,7 +38,11 @@ In the example the answer is:
 
 Another good way is to group elements. For example _goal_, _topics_ and _description_ are all _information_ about the project, so I group them under the element 5.
 
-Once the _app specific_ element are defined ...to be continued...
+Once the _app specific_ element are defined, the web dev can provide other information regarding the elements inside each block:
+
+<figure><img src="gol-paragraph.png"/><figcaption>Fig 3</figcaption></figure>
+
+In Fig 3, for example the developer can say that there is a title and some text
 
 ## Annotation
 As it is explained in the scenario, we can distinguish two type of annotation:
