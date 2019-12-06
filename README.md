@@ -2,13 +2,46 @@
 The purpose of this repo is to define the annotation format to use in html files in order to generating conversational agents (chatbots) out of websites. The scope of the annotation is to add information to the elements in the page. The information we provide with the annotation is necessary for the system to works correctly.
 
 ## Scenario
-Consider the following web site.
-![sito](sito.png)
-In order to create a conversational agent our system have to extraplate web element in the site:
-![web-element](web-element.png)
+Consider the following web site: 
+
+
+
+<figure><img src="sito.png"><figcaption>Fig 1</figcaption></figure>
+In order to create a conversational agent our system have to extrapolate web element in the site and give some semantic meaning to them:
+
+<figure><img src="web-element.png"/><figcaption>Fig2</figcaption></figure>
+
+In a first implementation, our system is not able to detect the relevant elements of a page, so it needs the help of the web developer. The developer has to take in mind that there are two layer:
+
+1. App specific layer (TBD the name)
+2. Element specific layer
+
+First the developer has to decide what are the app specific element
+
+In the Fig 2 I selected 5 app specific elements:
+
+1. The menu
+2. The _Goal of the project_ paragraph
+3. The _Topic_ paragraph
+4. The _Description_ paragraph
+5. The container of 2, 3 and 4
+
+There are no rule to define which are the app specific elements, it depends on the common sense of the web dev. A way that can help to identify them could be  ask yourself the following question:
+
+> What a user can do in this page?
+
+In the example the answer is:
+
+> The user can use the menu (1), he can read some information about the project (5) in particular the goal (2), the topics (3) and the description (4)
+
+**NB**: This isn't the unique answer
+
+Another good way is to group elements. For example _goal_, _topics_ and _description_ are all _information_ about the project, so I group them under the element 5.
+
+Once the _app specific_ element are defined ...to be continued...
 
 ## Annotation
-We can distinguish two type of annotation:
+As it is explained in the scenario, we can distinguish two type of annotation:
 * App specific
 * Element specific
 
@@ -34,7 +67,7 @@ Consider we have a web page regarding a project and inside it we have a _div_ el
 </code></pre>
 
 #### intent-desc
-The _intent-desc_ attribute provide the description of the intent that is specified in the _bot-intent_ element. Any time there is _bot-intent_ attribute, also the _intent-desc_ must be present. The value of this attribute have to answer the question _"What can you do?"_ considering that thequestion is made by the user of the site and the response came from the bot. Here an example:
+The _intent-desc_ attribute provide the description of the intent that is specified in the _bot-intent_ element. Any time there is _bot-intent_ attribute, also the _intent-desc_ must be present. The value of this attribute have to answer the question _"What can you do?"_ considering that the question is made by the user of the site and the response came from the bot. Here an example:
 
 <pre><code class="language-html">
 &lt;div bot-intent="project_info_gol" intent-desc="Tell you the gol of the project"&gt; 
@@ -66,11 +99,12 @@ Example:
 </code></pre>
 
 ### Element Specific
-When we are inside an html element that has an attribute _bot-intent_, we have to provide some  information to the subelements.
+When we are inside an html element that has an attribute _bot-intent_, we have to provide some  information to the sub elements.
 We can annotate them with the attribute **bot-element**. 
-NB: the _bot-element_ attribute is not mandatory for each subelement
+NB: the _bot-element_ attribute is not mandatory for each sub element
+
 #### Text Element
-Consider an element with an attribute _bot-type_ which value is **text**, then the value of _bot-element_ attribute in its subelement can be :
+Consider an element with an attribute _bot-type_ which value is **text**, then the value of _bot-element_ attribute in its sub element can be :
 * _title_: if the text is a title
 * _text_: if the text is simple text
 
