@@ -5,7 +5,7 @@ The purpose of this repo is to define the annotation format to use in html files
 Consider the following web site.
 ![sito](sito.png)
 In order to create a conversational agent our system have to extraplate web element in the site:
-![web-elem](web-elem.png)
+![web-element](web-element.png)
 
 ## Annotation
 We can distinguish two type of annotation:
