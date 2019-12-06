@@ -2,7 +2,10 @@
 The purpose of this repo is to define the annotation format to use in html files in order to generating conversational agents (chatbots) out of websites. The scope of the annotation is to add information to the elements in the page. The information we provide with the annotation is necessary for the system to works correctly.
 
 ## Scenario
+Consider the following web site.
 ![sito](sito.png)
+In order to create a conversational agent our system have to extraplate web element in the site:
+![web-elem](web-elem.png)
 
 ## Annotation
 We can distinguish two type of annotation:
