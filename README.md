@@ -50,8 +50,7 @@ As it is explained in the scenario, we can distinguish two type of annotation:
 * Element specific
 
 ### App specific annotation
-The app specific annotation add semantic information to the web pages and when we have to add them, we have to make a question to ourself: What a user can do in this page? or Which services provide the page or the specific part of the page?
-This information are provided with three attributes inside a html element:
+The app specific annotation need to define the app specific block described before. In order to define them the web developer has to specify three attributes:
 1. bot-intent
 2. intent-desc
 3. bot-type
@@ -59,7 +58,7 @@ This information are provided with three attributes inside a html element:
 #### bot-intent
 Given an html elements we can use it for different reason, for example if we have a table or a paragrah we can use it to acquire information, if we have a form we can use it to perform an action (i.e. login, buy ticket, etc) etc. The **bot-intent** annotation needs to provide this kind of information.
 Here an example:
-Consider we have a web page regarding a project and inside it we have a _div_ element that contain the information about the gol of the project. The proper way to add this information is to add the _bot_intent_ attribute in the _div_ element and write that it contains the information about the gol of the project:
+Consider we have a web page regarding a project (as in the example) and inside it we have a _div_ element that contain the information about the gol of the project (block number 2). The proper way to add this information is to add the _bot_intent_ attribute in the _div_ element and write that it contains the information about the gol of the project:
 
 <pre><code class="language-html">
 &lt;div bot-intent="project_info_gol"&gt; 
