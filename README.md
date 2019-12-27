@@ -6,10 +6,10 @@ Consider the following web page:
 
 
 
-<figure><img src="sito.png"><figcaption>Fig 1</figcaption></figure>
+<figure><img src="img/sito.png"><figcaption>Fig 1</figcaption></figure>
 In order to create a conversational agent our system have to extrapolate web element in the site and give some semantic meaning to them:
 
-<figure><img src="web-element.png"/><figcaption>Fig2</figcaption></figure>
+<figure><img src="img/web-element.png"/><figcaption>Fig2</figcaption></figure>
 In a first implementation, our system is not able to detect the relevant elements of a page, so it needs the help of the web developer. The developer has to take in mind that there are two layers:
 
 1. App specific layer (TBD the name)
@@ -39,7 +39,7 @@ Another good way is to group elements according to their context. For example _g
 
 Once the _app specific_ element are defined, the web dev can provide other information regarding the elements inside each block:
 
-<figure><img src="gol-paragraph.png"/><figcaption>Fig 3</figcaption></figure>
+<figure><img src="img/gol-paragraph.png"/><figcaption>Fig 3</figcaption></figure>
 In Fig 3, for example the developer can say that there is a title and some text
 
 The web developer also has to annotate the **external link** (only the relevant ones) in order to permits the navigation among pages.
@@ -134,7 +134,58 @@ Example:
 
 ### Navigation
 
-In order to do a correct annotation the web developer has to take in mind the whole web site structure. Not all the link of a page became a link for the system, but only the ones that is relevant for maintain a good conversation. Each relevant link became an intent for the system but they are annotated in a different way in order to be distinguished to _"_classical_"_ intents. Each link is annotated with the attribute **bot-link** inside the _a_ tag.
+The goal of the system is to take a conversation on all the web site. Web sites are composed by multiple web pages linked together. In this section will be explained how annotate the page in order to link it with other web pages.
 
-A link could refer to a page or an intent inside a page. Examples:
+First we consider _internal link_, so an hyperlink on a web page to another web page or resource on the same website. Consider two pages:
 
+<figure><img src="img/internal link 1.png"><figcaption>Fig 4</figcaption></figure>
+It could be two type of link:
+
+* A link that goes to another page: **page link **(name?)
+* A link that goes to an intent (anchor) of another page: **anchor link** (name?)
+
+#### Page link
+
+A page link is a link that is connected with another page of the same website. 
+
+<figure><img src="img/page link 1.png"><figcaption>Fig 5</figcaption></figure>
+The annotation for this type of link is simple: the developer has to add **bot-link** attribute in the right position of the html. Consider an example in which the user is in _page1.html_ and there is a link connecting page1 with page2. The following code is an example of annotation of the previous scenario:
+
+<pre><code class="language-html">
+&lt;ul&gt; 
+    &lt;li bot-link="page2.html"&gt;Goal of the project&lt;/h1&gt;
+&lt;/ul&gt;
+</code></pre>
+
+
+
+#### Anchor link
+
+An anchor link is connected to an intent of another page. 
+
+<figure><img src="img/anchor link 1.png"><figcaption>Fig 6</figcaption></figure>
+
+The annotation here is similar to the html anchor.  If the web developer want to make an intent an anchor has to annotate it with the tag _&lt;a&gt;_:
+
+<pre><code class="language-html">
+&lt;a bot-intent="intent4" 
+    bot-type="text"
+    intent-desc="Tell you the gol of the project"&gt;
+    &lt;/div&gt;
+        &lt;h1 bot-attribute="title"&gt;Goal of the project&lt;/h1&gt;
+        &lt;p bot-attribute="paragraph"&gt;
+            Some text ...
+        &lt;/p&gt;
+	&lt;/div&gt;    
+&lt;/a&gt;
+</code></pre>
+
+Once the intent is marked as an anchor, the _anchor link_ can be done; as in the _page link_ case the **bot-link** attribute must be added in the correct position of the html file and the value is the name of the page of the anchor intent followed by **#** character and the name of the intent. 
+
+Example:
+
+<pre><code class="language-html">
+&lt;ul&gt; 
+    &lt;li bot-link="page2.html#intent4"&gt;Goal of the project&lt;/h1&gt;
+&lt;/ul&gt;
+</code></pre>
